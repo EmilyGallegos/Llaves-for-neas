@@ -1,0 +1,48 @@
+--CREAR TABLAS CON LLAVES PRIMARIAS
+
+create table cliente (
+	id_cliente int not null,
+	nombre varchar(50),
+	PRIMARY KEY (id_cliente)
+);
+
+
+
+create table venta (
+	id_venta int not null,
+	id_cliente int not null,
+	cantidad int,
+	PRIMARY KEY (id_venta)
+);
+
+--AGREGAR UNA LLAVE FORÁNEA A LA TABLA VENTA
+
+ALTER TABLE venta ADD FOREIGN KEY (id_cliente) REFERENCES cliente (id_cliente)
+
+--INSERTAR DATOS 
+
+insert into cliente (1, "Andres"),
+(2, "Pedro"), (3,"Julio");
+
+insert into venta values (1,1,23);
+
+--ELIMINAR TABLAS (PRIMERO LA QUE CONTEGA LA CLAVE FORÁNEA)
+
+drop table venta;
+drop table cliente;
+
+
+--CREAR TABLAS UTILIZANDO LLAVES PRIMARIAS Y CLAVES FORÁNEAS
+create table cliente (
+	id_cliente int not null,
+	 PRIMARY KEY (id_cliente)
+);
+
+create table venta (
+	id_venta int not null,
+	id_cliente int not null,
+	PRIMARY KEY (id_venta),
+	FOREIGN KEY (id_cliente) REFERENCES cliente (id_cliente)
+);
+	
+
